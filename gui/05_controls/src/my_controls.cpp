@@ -1,4 +1,4 @@
-#include "my_widget.h"
+#include "my_controls.h"
 
 #include <QDebug>
 
@@ -21,9 +21,9 @@
 #include <QCompleter>
 #include <QPixmap>
 
-my_widget::my_widget()
+my_controls::my_controls()
 {
-	this->setWindowTitle("my widget");
+	this->setWindowTitle("controls test");
 	QVBoxLayout *layout = new QVBoxLayout();
 	this->setLayout(layout);
 
@@ -131,7 +131,7 @@ my_widget::my_widget()
 	layout->addWidget(lcd_number);
 }
 
-my_widget::~my_widget()
+my_controls::~my_controls()
 {
 }
 

@@ -5,4 +5,4 @@ INCLUDEPATH += \
 
 SOURCES += \
 	src/main.cpp \
-	src/my_widget.cpp
+	src/my_controls.cpp

@@ -9,13 +9,13 @@
  */
 
 #include <QApplication>
-#include "my_widget.h"
+#include "my_controls.h"
 
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 
-	my_widget widget;
+	my_controls widget;
 	widget.show();
 
 	return app.exec();
