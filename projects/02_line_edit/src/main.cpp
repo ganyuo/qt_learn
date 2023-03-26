@@ -9,26 +9,29 @@
  */
 
 #include <QApplication> /* 应用程序抽象类 */
-#include <QWidget>  /* 窗口类 */
-#include <QLineEdit>
+#include <QWidget>      /* 窗口类 */
+#include <QLineEdit>    /* 输入框 */
+#include <QVBoxLayout>
 #include <QCompleter>
 
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
-
 	QWidget widget; /* 构造一个窗口 */
-	widget.setWindowTitle("Hello World");
 
-	QLineEdit line_edit;
-	line_edit.setParent(&widget);
+	/* 添加两个输入框 */
+	QLineEdit name_input, password_input;
+	QVBoxLayout layout(&widget);
+	layout.addWidget(&name_input);
+	layout.addWidget(&password_input);
 
-	// line_edit.setEchoMode(QLineEdit::Password); /* 设置回显模式为密码模式 */
-	line_edit.setPlaceholderText("请输入密码");
-	QString text = line_edit.text();
-	QCompleter completer(QStringList() << "abc" << "129" << "998");
+	QCompleter completer(QStringList() << "abc" << "aaa" << "123");
 	completer.setFilterMode(Qt::MatchContains);
-	line_edit.setCompleter(&completer);
+	name_input.setCompleter(&completer); /* 设置输入匹配提示 */
+	name_input.setPlaceholderText("请用户名"); /* 设置输入提示 */
+
+	password_input.setEchoMode(QLineEdit::Password); /* 设置回显模式为密码模式 */
+	password_input.setPlaceholderText("请输入密码"); /* 设置输入提示 */
 
 	widget.show(); /* 显示窗口 */
 	return app.exec(); /* exec():进入消息循环 */
