@@ -1,5 +1,5 @@
 #include <QApplication>
-#include <Qwidget>
+#include <QWidget>
 #include <QPainter>
 
 class my_painter : public QWidget
@@ -7,8 +7,8 @@ class my_painter : public QWidget
 private:
     /* data */
 public:
-    my_painter(QWidget *);
-    ~my_painter();
+    my_painter() {};
+    ~my_painter() {};
 
     void paintEvent(QPaintEvent *e);
 };
@@ -17,7 +17,7 @@ void my_painter::paintEvent(QPaintEvent *e)
 {
     QPainter painter(this);
 
-    painter.
+    painter.drawLine(0, 0, 100, 100);
 }
 
 int main(int argc, char *argv[])

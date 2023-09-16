@@ -3,14 +3,12 @@
         {
             "type": "shell",
             "label": "qt_build_debug",
-            "command": "rm",
+            "command": "${workspaceRoot}/build.sh",
             "args": [
-                "-rf", "./*",
-                "&&", "qmake", "${file}", "CONFIG+=debug", "CONFIG+=qml_debug", 
-                "&&", "make"
+                "${file}"
             ],
             "options": {
-                "cwd": "${workspaceRoot}/build"
+                "cwd": "${workspaceRoot}"
             }
         }
     ],
