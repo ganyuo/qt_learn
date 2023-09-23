@@ -18,6 +18,8 @@ void my_painter::paintEvent(QPaintEvent *e)
     QPainter painter(this);
 
     painter.drawLine(0, 0, 100, 100);
+    painter.drawEllipse(QPoint(95, 333), 50, 50);
+    painter.drawText(QPoint(300, 50), "Hello world");
 }
 
 int main(int argc, char *argv[])
