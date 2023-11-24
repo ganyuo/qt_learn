@@ -2,9 +2,9 @@
 #define __MY_SLOT_H__
 
 #include <stdio.h>
-#include <QObject>
+#include <QWidget>
 
-class my_slot : public QObject
+class my_slot : public QWidget
 {
     // Q_OBJECT
 private:

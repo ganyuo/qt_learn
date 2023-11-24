@@ -1,23 +1,30 @@
-#include <QCoreApplication>
-#include <stdio.h>
+#include <QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QDebug>
 
 #include "my_signal.h"
 #include "my_slot.h"
 
 int main(int argc, char *argv[])
 {
-	QCoreApplication app(argc, argv);
+	QApplication app(argc, argv);
 
-    printf("my_signal sign\n");
+    qDebug() << "my_signal sign\n";
 
-    // my_signal sign;
-    // my_slot slot;
+    QWidget main_win;
+    QPushButton button;
+    button.setText("send_signal");
+    button.setParent(&main_win);
+    main_win.show();
 
-    // QObject::connect(&sign, SIGNAL(signal_fun()), &slot, SLOT(slot_fun()));
+    my_signal sign;
+    my_slot slot;
 
-    // emit sign.signal_fun();
+    QObject::connect(&sign, SIGNAL(signal_fun()), &slot, SLOT(slot_fun()));
+    QObject::connect(&button, SIGNAL(clicked()), &sign, SLOT(send_signal()));
 
-    printf("app.exec()\n");
+    qDebug() << "app.exec()\n";
 
 	return app.exec();
 }

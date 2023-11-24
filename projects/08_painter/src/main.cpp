@@ -2,6 +2,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <QPixmap>
+#include <QDebug>
 
 class my_painter : public QWidget
 {
@@ -17,6 +18,8 @@ public:
 void my_painter::paintEvent(QPaintEvent *e)
 {
     QPainter painter(this);
+
+    qDebug() << "start draw\n";
 
     /* 消锯齿 */
     painter.setRenderHint(QPainter::Antialiasing);
@@ -42,6 +45,8 @@ void my_painter::paintEvent(QPaintEvent *e)
     painter.drawRect(QRect(0, 120, 100, 50));
     // /* 画圆角矩形 */
     painter.drawRoundRect(QRect(0, 200, 100, 50));
+
+    qDebug() << "end draw\n";
 }
 
 int main(int argc, char *argv[])

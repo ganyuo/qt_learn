@@ -1,4 +1,4 @@
-QT += core
+QT += widgets gui
 
 INCLUDEPATH += \
 	inc
