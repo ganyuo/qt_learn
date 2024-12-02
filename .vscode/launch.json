@@ -19,7 +19,7 @@
 					"ignoreFailures": true
 				}
 			],
-			"preLaunchTask": "qt_build_debug",
+			"preLaunchTask": "qt_debug_build",
 			"miDebuggerPath": "/usr/bin/gdb"
 		}
 	]

@@ -1,12 +1,10 @@
 {
     "tasks": [
         {
+            "label": "qt_debug_build",
             "type": "shell",
-            "label": "qt_build_debug",
-            "command": "${workspaceRoot}/build.sh",
-            "args": [
-                "${file}"
-            ],
+            "command": "${workspaceRoot}/.vscode/debug_build.sh",
+            "args": ["${file}"],
             "options": {
                 "cwd": "${workspaceRoot}"
             }
