@@ -21,7 +21,8 @@ bool event_filter::eventFilter(QObject *o, QEvent *e)
         e->type() == QEvent::MouseButtonRelease ||
         e->type() == QEvent::MouseButtonDblClick)
     {
-        qDebug() << "button mouse event";
+		QPushButton *button = static_cast<QPushButton *>(o);
+        qDebug() << button->text() << "button mouse event";
         return true;
     }
     return QObject::eventFilter(o, e);
