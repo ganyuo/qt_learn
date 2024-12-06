@@ -44,7 +44,7 @@ void my_painter::paintEvent(QPaintEvent *e)
     // /* 画矩形 */
     painter.drawRect(QRect(0, 120, 100, 50));
     // /* 画圆角矩形 */
-    painter.drawRoundRect(QRect(0, 200, 100, 50));
+    painter.drawRoundedRect(QRect(0, 200, 100, 50), 15, 15, Qt::AbsoluteSize);
 
     qDebug() << "end draw\n";
 }

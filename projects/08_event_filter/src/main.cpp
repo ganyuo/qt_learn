@@ -4,10 +4,10 @@
 #include <QEvent>
 #include <QDebug>
 
-class event_filter : public QObject
+class event_filter_t : public QObject
 {
 public:
-	event_filter() : QObject() {};
+	event_filter_t() : QObject() {};
 
 	/* 重载消息过滤器 */
 	bool eventFilter(QObject *o, QEvent *e);
@@ -15,7 +15,7 @@ public:
 };
 
 /* 重载消息过滤器 */
-bool event_filter::eventFilter(QObject *o, QEvent *e)
+bool event_filter_t::eventFilter(QObject *o, QEvent *e)
 {
     if (e->type() == QEvent::MouseButtonPress ||
         e->type() == QEvent::MouseButtonRelease ||
@@ -28,7 +28,7 @@ bool event_filter::eventFilter(QObject *o, QEvent *e)
     return QObject::eventFilter(o, e);
 }
 
-bool event_filter::event(QEvent *e)
+bool event_filter_t::event(QEvent *e)
 {
     if(e->type() == QEvent::User)
     {
@@ -69,14 +69,14 @@ int main(int argc, char *argv[])
 	button.setParent(&main_w);
 	QObject::connect(&button, SIGNAL(clicked()), &main_w, SLOT(close()));
 
-	event_filter e_filter;
+	event_filter_t e_filter;
 	button.installEventFilter(&e_filter);
 
 	main_w.show();
 
 	/* 发送一个Event给widget */
 	// app.sendEvent(&e_filter, new QEvent(QEvent::User));  /* 发送消息，需要等widget处理完才运行后面程序 */
-	app.postEvent(&e_filter, new QEvent(QEvent::User));  /* 只将消息加入到消息队列，不需要等widget处理完 */
+	// app.postEvent(&e_filter, new QEvent(QEvent::User));  /* 只将消息加入到消息队列，不需要等widget处理完 */
 
 	return app.exec();
 }
