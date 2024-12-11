@@ -2,24 +2,15 @@
 #define __MY_SIGHNAL_H__
 
 #include <QObject>
-#include <QDebug>
 
+/* 一个定义了信号的类 */
 class my_signal : public QObject
 {
-    // Q_OBJECT
-private:
-    /* data */
-public:
-    my_signal() {};
-    ~my_signal() {};
-
-    void send_signal(){
-        qDebug() << "send_signal";
-        emit signal_fun();
-    }
+    Q_OBJECT
 
 signals:
-    virtual void signal_fun() {};
+    /* 信号 */
+    void signal_fun();
 };
 
 #endif /* __MY_SIGHNAL_H__ */

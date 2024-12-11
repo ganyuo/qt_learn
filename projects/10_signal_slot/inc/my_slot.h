@@ -1,21 +1,18 @@
 #ifndef __MY_SLOT_H__
 #define __MY_SLOT_H__
 
-#include <stdio.h>
-#include <QWidget>
+#include <QObject>
+#include <QDebug>
 
-class my_slot : public QWidget
+/* 一个定义了槽函数的类 */
+class my_slot : public QObject
 {
-    // Q_OBJECT
-private:
-    /* data */
-public:
-    my_slot() {};
-    ~my_slot() {};
+    Q_OBJECT
 
 public slots:
-    void slot_fun(){
-        printf("my_slot::slot_fun is called\n");
+    /* 槽函数 */
+    virtual void slot_fun(){
+        qDebug() << "my_slot::slot_fun is called\n";
     }
 };
 
