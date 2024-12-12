@@ -7,8 +7,8 @@ int main(int argc, char *argv[])
 {
 	QCoreApplication app(argc, argv);
 
-    my_signal sign_1, sign_2;
-    my_slot slot;
+    my_signal sign_1(1), sign_2(2);
+    my_slot slot(1);
 
     /* 两个信息号相连 */
     QObject::connect(&sign_1, SIGNAL(signal_fun(const char *, int)),
