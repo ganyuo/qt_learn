@@ -10,7 +10,7 @@ class my_signal : public QObject
 
 signals:
     /* 信号 */
-    void signal_fun();
+    void signal_fun(const char *str, int id = 0);
 };
 
 #endif /* __MY_SIGHNAL_H__ */

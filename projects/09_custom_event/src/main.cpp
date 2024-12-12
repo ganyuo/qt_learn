@@ -4,8 +4,10 @@
 #include <QEvent>
 #include <QDebug>
 
+/* 初始化自定义的事件类型值 */
 static const int CUSTOM_EVENT_TYPE = QEvent::registerEventType();
 
+/* 自定义事件类 */
 class custom_event_t : public QEvent
 {
 public:
@@ -17,11 +19,11 @@ class main_widgt_t : public QWidget
 public:
     main_widgt_t() : QWidget() {};
 
-    /* 重载事件处理函数 */
     bool event(QEvent *e);
     void customEvent(QEvent *e);
 };
 
+/* 重载事件处理函数 */
 bool main_widgt_t::event(QEvent *e)
 {
     if(e->type() == CUSTOM_EVENT_TYPE)
@@ -31,6 +33,7 @@ bool main_widgt_t::event(QEvent *e)
     return QObject::event(e);
 }
 
+/* 重载自定义事件处理函数 */
 void main_widgt_t::customEvent(QEvent *e)
 {
     if(e->type() == CUSTOM_EVENT_TYPE)
@@ -53,7 +56,7 @@ int main(int argc, char *argv[])
 	QObject::connect(&button, &QPushButton::clicked, [&main_w]()
 	{
         custom_event_t custom_event;
-        /* 发送自定义事件 */
+        /* 给main_w发送自定义事件 */
         QApplication::sendEvent(&main_w, &custom_event);
 	});
 

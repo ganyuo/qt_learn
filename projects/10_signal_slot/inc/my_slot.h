@@ -11,8 +11,8 @@ class my_slot : public QObject
 
 public slots:
     /* 槽函数 */
-    virtual void slot_fun(){
-        qDebug() << "my_slot::slot_fun is called\n";
+    virtual void slot_fun(const char *str){
+        qDebug() << "my_slot::slot_fun get str: " << str;
     }
 };
 

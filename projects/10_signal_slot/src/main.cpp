@@ -10,11 +10,11 @@ int main(int argc, char *argv[])
     my_signal sign;
     my_slot slot;
 
-    /* 连接信号和槽 */
-    QObject::connect(&sign, SIGNAL(signal_fun()), &slot, SLOT(slot_fun()));
+    /* 连接信号和槽, 信号函数的参数个数要大于槽函数 */
+    QObject::connect(&sign, SIGNAL(signal_fun(const char *, int)), &slot, SLOT(slot_fun(const char *)));
 
     /* 发送信号 */
-    emit sign.signal_fun();
+    emit sign.signal_fun("hello word", 1);
 
 	return app.exec();
 }
