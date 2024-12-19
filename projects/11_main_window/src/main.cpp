@@ -6,10 +6,12 @@
 #include <QObject>
 #include <QToolBar>
 #include <QStatusBar>
+#include <QDockWidget>
 #include <QLabel>
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QSystemTrayIcon>
+#include <QVBoxLayout>
 
 int main(int argc, char *argv[])
 {
@@ -43,8 +45,14 @@ int main(int argc, char *argv[])
     QLabel *status_label = new QLabel("main window running...");
     status_bar->addWidget(status_label);
 
+    /* 浮动窗口 */
+    QDockWidget dock_widget("浮动窗口", &main_win); /* 创建浮动窗口 */
+    dock_widget.setMinimumWidth(100); /* 设置最小宽度 */
+    /* 将浮动窗口放在主窗口的左边 */
+    main_win.addDockWidget(Qt::LeftDockWidgetArea, &dock_widget);
+
     /* 中心区域，别的控件占用了之后，剩下的区域都是CentralWidget */
-    QWidget central_widge;
+    QWidget central_widget;
 	QGridLayout central_layout;
 	central_layout.setRowStretch(0, 1);
 	central_layout.setColumnStretch(0, 1);
@@ -54,8 +62,8 @@ int main(int argc, char *argv[])
 	central_layout.addWidget(new QLineEdit(), 2, 2);
 	central_layout.setRowStretch(3, 1);
 	central_layout.setColumnStretch(3, 1);
-	central_widge.setLayout(&central_layout);
-    main_win.setCentralWidget(&central_widge); /* 设置主窗口的中心区域 */
+	central_widget.setLayout(&central_layout);
+    main_win.setCentralWidget(&central_widget); /* 设置主窗口的中心区域 */
 
     main_win.show();
 
