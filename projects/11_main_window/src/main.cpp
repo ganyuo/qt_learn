@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QMainWindow main_win;
+    main_win.resize(600, 400);
 
     /* 菜单栏 */
     QMenuBar *meun_bar = main_win.menuBar(); /* 获取主窗口的菜单栏 */
@@ -34,6 +35,8 @@ int main(int argc, char *argv[])
     tool_bar->addAction(open_action); /* 向工具栏中添加Action */
     tool_bar->addAction(save_action);
     tool_bar->addAction(exit_action);
+    tool_bar->setAllowedAreas(Qt::AllToolBarAreas); /* 设置可停靠区域 */
+    tool_bar->setFloatable(true); /* 设置是否可以浮动 */
 
     /* 状态栏 */
     QStatusBar *status_bar = main_win.statusBar();  /* 获取主窗口的状态栏 */
@@ -43,10 +46,14 @@ int main(int argc, char *argv[])
     /* 中心区域，别的控件占用了之后，剩下的区域都是CentralWidget */
     QWidget central_widge;
 	QGridLayout central_layout;
-	central_layout.addWidget(new QLabel("用户名："), 0, 0);
-	central_layout.addWidget(new QLineEdit(), 0, 1);
-	central_layout.addWidget(new QLabel("密码："), 1, 0);
-	central_layout.addWidget(new QLineEdit(), 1, 1);
+	central_layout.setRowStretch(0, 1);
+	central_layout.setColumnStretch(0, 1);
+	central_layout.addWidget(new QLabel("用户名："), 1, 1);
+	central_layout.addWidget(new QLineEdit(), 1, 2);
+	central_layout.addWidget(new QLabel("密码："), 2, 1);
+	central_layout.addWidget(new QLineEdit(), 2, 2);
+	central_layout.setRowStretch(3, 1);
+	central_layout.setColumnStretch(3, 1);
 	central_widge.setLayout(&central_layout);
     main_win.setCentralWidget(&central_widge); /* 设置主窗口的中心区域 */
 
