@@ -9,6 +9,7 @@
 #include <QColorDialog>
 #include <QFontDialog>
 #include <QInputDialog>
+#include <QDebug>
 
 QPushButton *add_dialog_button(QString button_text, std::function<void()> slot)
 {
@@ -40,21 +41,80 @@ int main(int argc, char *argv[])
         modaless_dialog->show(); /* 非阻塞显示对话框 */
     }));
 
-    main_layout.addWidget(add_dialog_button("信息消息框", [&main_win](){
-        QMessageBox::information(&main_win, "信息消息框", "假装这是一条信息消息");
+    /* 消息对话框 */
+    main_layout.addWidget(add_dialog_button("信息消息框", [](){
+        QMessageBox::information(nullptr, "信息消息框", "假装这是一条信息消息");
     }));
 
-    main_layout.addWidget(add_dialog_button("警告消息框", [&main_win](){
-        QMessageBox::warning(&main_win, "警告消息框", "假装这是一条警告消息");
+    main_layout.addWidget(add_dialog_button("警告消息框", [](){
+        QMessageBox::warning(nullptr, "警告消息框", "假装这是一条警告消息");
     }));
 
-    main_layout.addWidget(add_dialog_button("错误消息框", [&main_win](){
-        QMessageBox::critical(&main_win, "错误消息框", "假装这是一条错误消息");
+    main_layout.addWidget(add_dialog_button("错误消息框", [](){
+        QMessageBox::critical(nullptr, "错误消息框", "假装这是一条错误消息");
     }));
 
-    main_layout.addWidget(add_dialog_button("问题消息框", [&main_win](){
-        QMessageBox::question(&main_win, "问题消息框", "假装这是一个问题");
+    main_layout.addWidget(add_dialog_button("问题消息框", [](){
+        int ret = QMessageBox::question(nullptr, "问题消息框", "假装这是一个问题");
+        if (ret == QMessageBox::Yes) {
+            qDebug() << "return yes";
+        }
+        else {
+            qDebug() << "return no";
+        }
     }));
+
+    /* 文件对话框 */
+    main_layout.addWidget(add_dialog_button("打开单个文件", [](){
+        QString file_path = QFileDialog::getOpenFileName();
+        qDebug() << file_path;
+    }));
+
+    main_layout.addWidget(add_dialog_button("打开多个文件", [](){
+        QStringList file_path_list = QFileDialog::getOpenFileNames();
+        qDebug() << file_path_list;
+    }));
+
+    main_layout.addWidget(add_dialog_button("打开目录", [](){
+        QString dir_path = QFileDialog::getExistingDirectory();
+        qDebug() << dir_path;
+    }));
+
+    main_layout.addWidget(add_dialog_button("保存文件", [](){
+        QString file_path = QFileDialog::getSaveFileName();
+        qDebug() << file_path;
+    }));
+
+    /* 颜色对话框 */
+    main_layout.addWidget(add_dialog_button("颜色对话框", [](){
+        QColor color = QColorDialog::getColor();
+        qDebug() << color;
+    }));
+
+    /* 字体对话框 */
+    main_layout.addWidget(add_dialog_button("字体对话框", [](){
+        bool flag = false;
+        QFont font = QFontDialog::getFont(&flag);
+        qDebug() << flag << ", " << font;
+    }));
+
+    /* 输入对话框 */
+    main_layout.addWidget(add_dialog_button("输入浮点数", [](){
+        double ret = QInputDialog::getDouble(nullptr, "输入对话框", "输入浮点数");
+        qDebug() << ret;
+    }));
+
+    main_layout.addWidget(add_dialog_button("输入整数", [](){
+        int ret = QInputDialog::getInt(nullptr, "输入对话框", "输入整数");
+        qDebug() << ret;
+    }));
+
+    main_layout.addWidget(add_dialog_button("选择选项", [](){
+        QString ret = QInputDialog::getItem(nullptr, "输入对话框", "选择选项", 
+                                            {"选项_1", "选项_2", "选项_3"});
+        qDebug() << ret;
+    }));
+
 
     main_win.show();
     app.exec();
