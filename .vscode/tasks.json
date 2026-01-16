@@ -1,9 +1,18 @@
 {
     "tasks": [
         {
-            "label": "qt_debug_build",
+            "label": "qmake_debug_build",
             "type": "shell",
-            "command": "${workspaceRoot}/.vscode/debug_build.sh",
+            "command": "${workspaceRoot}/.vscode/qmake_build.sh",
+            "args": ["${file}"],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            }
+        },
+        {
+            "label": "cmake_debug_build",
+            "type": "shell",
+            "command": "${workspaceRoot}/.vscode/cmake_build.sh",
             "args": ["${file}"],
             "options": {
                 "cwd": "${workspaceRoot}"

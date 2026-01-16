@@ -48,8 +48,11 @@ int main(int argc, char *argv[])
     /* 浮动窗口 */
     QDockWidget dock_widget("浮动窗口", &main_win); /* 创建浮动窗口 */
     dock_widget.setMinimumWidth(100); /* 设置最小宽度 */
+    dock_widget.setFloating(false);
     /* 将浮动窗口放在主窗口的左边 */
     main_win.addDockWidget(Qt::LeftDockWidgetArea, &dock_widget);
+    dock_widget.setFeatures(QDockWidget::NoDockWidgetFeatures);
+    dock_widget.setAllowedAreas(Qt::LeftDockWidgetArea);
 
     /* 中心区域，别的控件占用了之后，剩下的区域都是CentralWidget */
     QWidget central_widget;
