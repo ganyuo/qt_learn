@@ -7,31 +7,42 @@ Window
     height: 720
     visible: true
 
+    signal info(string last_name, string first_name, string age)
+
+    // onInfo: function(l, f, a) {
+    //     print("last name: " + l + ", first name: " + f + ", age: " + a)
+    // }
+
+    // onInfo: function(l, f) {
+    //     print("last name: " + l + ", first name: " + f)
+    // }
+
+    // onInfo: function(f, a) {
+    //     print("first name: " + f + ", age: " + a)
+    // }
+
+    // onInfo: function(_, f, a) {
+    //     print("first name: " + f + ", age: " + a)
+    // }
+
+    onInfo: function(_, _, a) {
+        print("age: " + a)
+    }
+
     Rectangle
     {
         id: rect_id
-        height: 200
         width: 300
+        height: 200
         color: "dodgerblue"
-
-        signal greet(string message)
-        signal forward_greeting(string message)
-
-        function respond_your_way(message) {
-            console.log("custom response: " + message)
-        }
 
         MouseArea
         {
             anchors.fill: parent
             onClicked: {
-                rect_id.greet("The sky is blue")
+                root_id.info("snow", "john", 33)
             }
         }
     }
 
-    Component.onCompleted: {
-        rect_id.greet.connect(rect_id.forward_greeting)
-        rect_id.forward_greeting.connect(rect_id.respond_your_way)
-    }
 }
