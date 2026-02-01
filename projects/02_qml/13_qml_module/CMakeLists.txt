@@ -35,6 +35,7 @@ qt_standard_project_setup(REQUIRES 6.8)
 qt_add_executable(${TARGET_NAME} ${SOURCES_FILE})
 qt_add_qml_module(${TARGET_NAME}
     URI ${PROJECT_NAME}
+    VERSION 1.0
     QML_FILES qml/Main.qml
 )
 

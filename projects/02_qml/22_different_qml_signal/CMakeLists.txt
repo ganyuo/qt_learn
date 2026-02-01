@@ -32,23 +32,13 @@ set(TARGET_NAME "a.out")
 # 为典型的 Qt 应用程序设置整个项目的默认值
 qt_standard_project_setup(REQUIRES 6.8)
 # Qt提供的add_executable封装
-qt_add_executable(${TARGET_NAME}
-    ${SOURCES_FILE}
-)
-
-qt_add_resources(${TARGET_NAME} "qml"
-    PREFIX /
-    FILES qml/images/滑稽.png
-)
-
+qt_add_executable(${TARGET_NAME} ${SOURCES_FILE})
 qt_add_qml_module(${TARGET_NAME}
     URI ${PROJECT_NAME}
     VERSION 1.0
     QML_FILES qml/Main.qml
-    # RESOURCES qml/resource.qrc
-    # RESOURCE_FREFIX /
-    # RESOURCES
-    #     qml/images/滑稽.png
+    QML_FILES qml/Notifier.qml
+    QML_FILES qml/Receiver.qml
 )
 
 # 链接Qt的库
