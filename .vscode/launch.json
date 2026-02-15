@@ -5,7 +5,7 @@
 			"name": "qt_launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceRoot}/build/a.out",
+			"program": "${workspaceRoot}/build/qt_learn",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",

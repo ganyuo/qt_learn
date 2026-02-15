@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
-    engine.loadFromModule("qt_quick", "Main");
+    engine.loadFromModule("qt_learn", "Main");
 
     return app.exec();
 }

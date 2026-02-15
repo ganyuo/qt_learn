@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(qt_quick VERSION 0.1 LANGUAGES CXX)
+project(qt_learn VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17) # 指定C++语言标准
 set(CMAKE_CXX_STANDARD_REQUIRED ON) # 强制要求指定的标准必须被满足
@@ -24,7 +24,7 @@ file(GLOB SOURCES_FILE
     ${CMAKE_SOURCE_DIR}/src/*.cpp
 )
 
-set(TARGET_NAME "a.out")
+set(TARGET_NAME ${PROJECT_NAME})
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/qml/components)
 add_subdirectory(${CMAKE_SOURCE_DIR}/qml/constants)
