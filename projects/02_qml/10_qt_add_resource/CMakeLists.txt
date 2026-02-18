@@ -42,7 +42,7 @@ qt_add_resources(${TARGET_NAME} "qml"
 )
 
 qt_add_qml_module(${TARGET_NAME}
-    URI ${PROJECT_NAME}
+    URI "qt_quick"
     VERSION 1.0
     QML_FILES qml/Main.qml
     # RESOURCES qml/resource.qrc

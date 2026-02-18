@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     QQuickStyle::setStyle("Imagine"); // 设置控件样式
-    engine.loadFromModule("qt_learn", "Main");
+    engine.loadFromModule("qt_quick", "Main");
 
     return app.exec();
 }

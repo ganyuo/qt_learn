@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     engine.addImportPath(":/");
-    engine.loadFromModule("qt_learn", "Main");
+    engine.loadFromModule("qt_quick", "Main");
 
     return app.exec();
 }
