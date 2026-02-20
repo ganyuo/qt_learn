@@ -10,75 +10,36 @@ Window {
 
     ColumnLayout {
         width: parent.width
-        height: parent.height
+        spacing: 40
 
         Label {
-            text: "non editable combo"
             wrapMode: Label.Wrap
             Layout.fillWidth: true
+            text: "delay button"
+            font.pointSize: 15
         }
 
-        ComboBox {
-            id: non_editable_combo_id
-            model: ["one", "two", "three", "four"]
+        DelayButton {
+            property bool activated: false
+            text: "delay button"
             Layout.fillWidth: true
-            onActivated: function() {
-                console.log("[" + currentIndex + "] " + currentText + "is activated")
-            }
-        }
+            delay: 1000
 
-        Label {
-            text: "editable combo"
-            wrapMode: Label.Wrap
-            Layout.fillWidth: true
-        }
-
-        ComboBox {
-            id: editable_combo_id
-            editable: true
-            textRole: "text"
-            // textRole: "location"
-            // textRole: "favorite_food"
-            Layout.fillWidth: true
-            model: ListModel {
-                id: model
-                ListElement {
-                    text: "dog"
-                    location: "kigali"
-                    favorite_food: "meet"
-                }
-                ListElement {
-                    text: "chicken"
-                    location: "nairobi"
-                    favorite_food: "rice"
-                }
-                ListElement {
-                    text: "cat"
-                    location: "mumbai"
-                    favorite_food: "fish"
-                }
-            }
-
-            onAccepted: function() {
-                if (find(editText) === -1) {
-                    model.append({text: editText, location: "US", favorite_food: "apple"})
+            onPressed: function() {
+                if (activated === true) {
+                    console.log("button is clicked. carrying out the task");
+                    activated = false;
                 }
             }
 
             onActivated: function() {
-                console.log("[" + currentIndex + "] " + currentText + "is activated")
+                console.log("button activated");
+                activated = true
             }
-        }
-        Button {
-            text: "captrue current element"
-            Layout.fillWidth: true
-            onClicked: function() {
-                console.log(model.get(editable_combo_id.currentIndex).text + ", " + model.get(editable_combo_id.currentIndex).location)
+
+            onPressedChanged: function() {
+                console.log(progress)
             }
-        }
-        Item {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
         }
     }
 }
