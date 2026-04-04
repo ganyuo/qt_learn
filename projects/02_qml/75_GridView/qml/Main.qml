@@ -51,8 +51,8 @@ Window {
         id: gridView_id
         anchors.fill: parent
         model: listModel_id
-        flow: GridView.FlowTopToBottom
-        layoutDirection: Qt.RightToLeft
+        // flow: GridView.FlowTopToBottom
+        // layoutDirection: Qt.RightToLeft
         delegate: Rectangle {
             width: 100
             height: width

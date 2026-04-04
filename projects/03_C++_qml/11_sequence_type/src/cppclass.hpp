@@ -4,9 +4,6 @@
 
 #include <QObject>
 #include <QtQml>
-#include <QFont>
-#include <QColor>
-#include <QTime>
 
 class Cppclass : public QObject
 {
@@ -17,15 +14,11 @@ class Cppclass : public QObject
 public:
     explicit Cppclass(QObject *parent = nullptr);
 
-signals:
-    void send_time(QTime time);
-    void send_date_time(QDateTime date_time);
+    Q_INVOKABLE void qml_array_to_cpp(QVector<QString> vector);
+    Q_INVOKABLE QVector<QString> retrieve_stings();
 
-public slots:
-    void cpp_slot();
-
-    void time_slot(QTime time);
-    void data_time_slot(QDateTime date_time);
+private:
+    QVector<QString> _vector;
 };
 
 #endif /* __CPPCLASS_HPP__ */
