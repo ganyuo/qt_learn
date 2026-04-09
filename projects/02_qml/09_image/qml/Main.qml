@@ -8,45 +8,58 @@ Window
     visible: true
     title: qsTr("QML Image")
 
-    Item
+    Column
     {
         id: container_item_id
-        x: 50
-        y: 50
-        width: 400
-        height: 200
+        anchors.fill: parent
+
+        Text {
+            text: "image1:"
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
 
         Image
         {
-            x: 10
-            y: 50
+            anchors.horizontalCenter: parent.horizontalCenter
             width: 100
             height: 100
             source: "file:image/滑稽.png"
         }
 
+        Text {
+            text: "image2:"
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
         Image
         {
-            x: 150
-            y: 50
+            anchors.horizontalCenter: parent.horizontalCenter
             width: 100
             height: 100
             source: "qrc:/images/滑稽.png"
         }
 
+        Text {
+            text: "image3:"
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
         Image
         {
-            x: 300
-            y: 50
+            anchors.horizontalCenter: parent.horizontalCenter
             width: 100
             height: 100
             source: "file:///home/ganyuo/workspace/qt_learn/image/滑稽.png"
         }
 
+        Text {
+            text: "image4:"
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
         Image
         {
-            x: 450
-            y: 50
+            anchors.horizontalCenter: parent.horizontalCenter
             width: 100
             height: 100
             source: "https://github.com/ganyuo/qt_learn/blob/master/image/%E6%BB%91%E7%A8%BD.png?raw=true"

@@ -30,7 +30,7 @@ Window {
                 location:"Earth"
             }
 
-            Cpp_class.pass_from_qml_to_cpp(arr, map)
+            Cppclass.pass_from_qml_to_cpp(arr, map)
         }
     }
 
@@ -39,7 +39,7 @@ Window {
         text : "GetVariantListFrom Cpp"
         anchors.top: button1Id.bottom
         onClicked: {
-            var data = Cpp_class.get_variant_list_from_cpp()
+            var data = Cppclass.get_variant_list_from_cpp()
             data.forEach(function(element){
              console.log("Array item: " + element)
             })
@@ -51,7 +51,7 @@ Window {
         text : "GetVariantMapFrom Cpp"
         anchors.top: button2Id.bottom
         onClicked: {
-            var data = Cpp_class.get_variant_map_from_cpp()
+            var data = Cppclass.get_variant_map_from_cpp()
             for (var mKey in data)
             {
                 console.log("Map["+mKey+"]: " + data[mKey])
@@ -64,7 +64,7 @@ Window {
         text : "Trigger JSCall"
         anchors.top: button3Id.bottom
         onClicked: {
-            Cpp_class.trigger_js_call();
+            Cppclass.trigger_js_call();
         }
     }
 }

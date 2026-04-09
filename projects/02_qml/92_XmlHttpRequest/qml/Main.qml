@@ -7,25 +7,25 @@ Window {
     height: 720
     visible: true
 
-    // function download_data(url) {
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.onreadystatechange = function() {
-    //         if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
-    //             console.log("Headers received");
-    //         }
-    //         else if (xhr.readyState === XMLHttpRequest.DONE) {
-    //             if (xhr.status == 200) {
-    //                 // console.log("Got the data from the server: " + xhr.responseText.toString());
-    //                 textArea_id.text = xhr.responseText.toString()
-    //             }
-    //             else {
-    //                 console.log("Something went wrong");
-    //             }
-    //         }
-    //     };
-    //     xhr.open("GET", url);
-    //     xhr.send()
-    // }
+    function download_data(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+                console.log("Headers received");
+            }
+            else if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status == 200) {
+                    // console.log("Got the data from the server: " + xhr.responseText.toString());
+                    textArea_id.text = xhr.responseText.toString()
+                }
+                else {
+                    console.log("Something went wrong");
+                }
+            }
+        };
+        xhr.open("GET", url);
+        xhr.send()
+    }
 
     function download_data(url, callback) {
         var xhr = new XMLHttpRequest();

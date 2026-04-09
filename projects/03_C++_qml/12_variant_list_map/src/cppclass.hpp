@@ -10,8 +10,9 @@
 class Cppclass : public QObject
 {
     Q_OBJECT
-    QML_ELEMENT
+    // QML_ELEMENT
     // QML_SINGLETON
+    // QML_UNCREATABLE("qml interface only allow one");
 
 public:
     explicit Cppclass(QObject *parent = nullptr);
